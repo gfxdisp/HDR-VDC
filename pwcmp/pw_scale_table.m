@@ -57,9 +57,6 @@ pp = 1;
 % for each scene
 for gg=start_group:length(GRs)
 
-    C = unique( cat( 1, T.(condition_cols{1}), T.(condition_cols{2}) ) ); % all conditions
-    N = length(C);
-
     if gg==0
         Ds = T;
         group = 'all';
@@ -68,6 +65,9 @@ for gg=start_group:length(GRs)
         group = GRs{gg};
     end
     fprintf( 1, 'Group: %s\n', group );
+    
+    C = unique( cat( 1, Ds.(condition_cols{1}), Ds.(condition_cols{2}) ) ); % all conditions of the scene
+    N = length(C);
     
     OBSs = unique( Ds.(observer_col) );
         
