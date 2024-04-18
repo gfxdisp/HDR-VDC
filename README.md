@@ -44,9 +44,20 @@ The data folder contains the following CSV files:
 
 * [`data/HDR_VDC_JOD_Scores.csv`](https://github.com/gfxdisp/HDR-VDC/blob/main/data/HDR_VDC_JOD_Scores.csv): The file is a cleaner version of [`data/scaled_jod_scores.csv`](https://github.com/gfxdisp/HDR-VDC/blob/main/data/scaled_jod_scores.csv), which provides more information on the test videos. More information on the format of the file is provided in the dataset webpage README file.
 
-* [`data/jod_distribution`](https://github.com/gfxdisp/HDR-VDC/tree/main/data/jod_distribution): The distribution of the JOD score of each test condition, computed using bootstrapping with 500 samples. The results may differ slightly after re-running the [`data_scaling/scale_data_to_JOD.m`](https://github.com/gfxdisp/HDR-VDC/blob/main/data_scaling/scale_data_to_JOD.m) function. The folder is composed of multiple files, for each content and each display luminance level. Where each file consists of 9 columns, corresponding to the test conditions of the content and display luminance level, and 500 rows, corresponding to the 500 samples of the distribution of the JOD score. 
+* [`data/jod_distribution`](https://github.com/gfxdisp/HDR-VDC/tree/main/data/jod_distribution): The folder contains the distribution of the JOD score of each test condition, for each content and each display and viewing conditon, computed using bootstrapping with 500 samples. The results may differ slightly after re-running the [`data_scaling/scale_data_to_JOD.m`](https://github.com/gfxdisp/HDR-VDC/blob/main/data_scaling/scale_data_to_JOD.m) function. The folder is composed of multiple files, for each content and each display luminance level. Where each file consists of 9 columns, corresponding to the test conditions of the content and display luminance level, and 500 rows, corresponding to the 500 samples of the distribution of the JOD score. 
 
-* [`data/jod_distributions.csv`](https://github.com/gfxdisp/HDR-VDC/tree/main/data/jod_distributions.csv): The file is a cleaner and compact version of the [`data/jod_distribution`](https://github.com/gfxdisp/HDR-VDC/tree/main/data/jod_distribution) files. 
+* [`data/jod_distributions.csv`](https://github.com/gfxdisp/HDR-VDC/tree/main/data/jod_distributions.csv): The file is a cleaner and more compact version of the [`data/jod_distribution`](https://github.com/gfxdisp/HDR-VDC/tree/main/data/jod_distribution) files. The file consists of 11 columns: 
+	* content: the video content name. 
+	* viewing_distance: the viewing distance from the display. It can take 2 values: 'near' (effective resolution = 60 ppd) or 'far' (effective resolution = 120 ppd).
+	* luminance_level: the luminance level of the display. It can take 2 values: 'bright' or 'dim' (where the luminance of the video is reduced by a factor of 8).
+	* H_1920x1080: the distribution of the JOD score of the `crf='H'` and `resolution=1920x1080` test condition, for each content, viewing distance and display luminance level. 
+	* H_1280x720: the distribution of the JOD score of the `crf='H'` and `resolution=1280x720` test condition, for each content, viewing distance and display luminance level. 
+	* M_3840x2160: the distribution of the JOD score of the `crf='M'` and `resolution=3840x2160` test condition, for each content, viewing distance and display luminance level. 
+	* M_1920x1080: the distribution of the JOD score of the `crf='M'` and `resolution=1920x1080` test condition, for each content, viewing distance and display luminance level. 
+	* M_1280x720: the distribution of the JOD score of the `crf='M'` and `resolution=1280x720` test condition, for each content, viewing distance and display luminance level. 
+	* L_3840x2160: the distribution of the JOD score of the `crf='L'` and `resolution=3840x2160` test condition, for each content, viewing distance and display luminance level. 
+	* L_1920x1080: the distribution of the JOD score of the `crf='L'` and `resolution=1920x1080` test condition, for each content, viewing distance and display luminance level. 
+	* L_1280x720: the distribution of the JOD score of the `crf='L'` and `resolution=1280x720` test condition, for each content, viewing distance and display luminance level. 
 
 ## References
 
