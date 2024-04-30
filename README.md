@@ -11,7 +11,7 @@ We employ the pairwise comparison methodology [7] and collect Just-Objectionable
 
 This repository contains both the code and data used to scale the pairwise comparisons to Just-Objectionable-Difference (JOD) scores. 
 
-The dataset (the reference and test videos as well as the JOD scores) can be found and downloaded from: ... 
+The dataset (the reference and test videos as well as the JOD scores) can be found and downloaded from the [dataset repository](https://doi.org/10.17863/CAM.107964) 
 
 The details about the dataset and experiment methodology can be found on the [project website](https://www.cl.cam.ac.uk/research/rainbow/projects/hdr-vdc/). 
 
