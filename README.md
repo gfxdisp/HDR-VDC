@@ -17,7 +17,7 @@ The details about the dataset and experiment methodology can be found on the [pr
 
 ## Code
 
-Currently, we provide a simple outliers analysis function in [`data_scaling/outliers_analysis.m`](https://github.com/gfxdisp/HDR-VDC/blob/main/data_scaling/outliers_analysis.m), as well as a scaling function of the pairwise comparisons to JOD scores in [`data_scaling/scale_data_to_JOD.m`](https://github.com/gfxdisp/HDR-VDC/blob/main/data_scaling/scale_data_to_JOD.m). 
+Currently, we provide a simple outliers analysis function in [`data_scaling/outliers_analysis.m`](https://github.com/gfxdisp/HDR-VDC/blob/main/data_scaling/outliers_analysis.m), a scaling function of the pairwise comparisons to JOD scores in [`data_scaling/scale_data_to_JOD.m`](https://github.com/gfxdisp/HDR-VDC/blob/main/data_scaling/scale_data_to_JOD.m), as well as statistical analysis (ANOVA) function in [`data_scaling/statistical_analysis.m`](https://github.com/gfxdisp/HDR-VDC/blob/main/data_scaling/statistical_analysis.m) to measure the effect of viewing distance and display peak luminance on the JOD scores. 
 
 The [`pwcmp`](https://github.com/gfxdisp/HDR-VDC/tree/main/pwcmp) folder contains the necessary base functions for our functions. 
 
@@ -58,6 +58,8 @@ The data folder contains the following CSV files:
 	* L_3840x2160: the distribution of the JOD score of the `crf='L'` and `resolution=3840x2160` test condition, for each content, viewing distance and display luminance level. 
 	* L_1920x1080: the distribution of the JOD score of the `crf='L'` and `resolution=1920x1080` test condition, for each content, viewing distance and display luminance level. 
 	* L_1280x720: the distribution of the JOD score of the `crf='L'` and `resolution=1280x720` test condition, for each content, viewing distance and display luminance level. 
+
+* [`data/statistical_test_results.csv`](https://github.com/gfxdisp/HDR-VDC/blob/main/data/statistical_test_results.csv): statistical significance and effect size of the viewing distance and display peak luminance over all contents and for each distortion separately. The results are from the [`data_scaling/statistical_analysis.m`](https://github.com/gfxdisp/HDR-VDC/blob/main/data_scaling/statistical_analysis.m) function.
 
 ## References
 
