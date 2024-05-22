@@ -1,5 +1,7 @@
-function outliers_analysis()
-
+function outliers_analysis(do_plot)
+arguments
+    do_plot logical = false 
+end
 % A simple outlier analysis for a the pairwise comparison data collected
 % in the experiment. 
 %
@@ -37,10 +39,52 @@ D = [D1; D2] ;
 % 
 % The function also displays log-10 likelihood and log-ratio difference
 % for each observer. Large positive log-ratio difference (e.g. greater than
-% 1) could indicate that a particular observer is an outlier. 
+% 1.5) could indicate that a particular observer is an outlier. 
 
-[L, dist_L] = pw_outlier_analysis_table( D, 'scene', { 'condition_1', 'condition_2' },'observer', 'selection') ;
- 
+[L, dist_L, OBSs] = pw_outlier_analysis_table( D, 'scene', { 'condition_1', 'condition_2' },'observer', 'selection') ;
+
+% Sort the observers by index 
+
+[observers, sort_indexes] = sort(str2double(replace(OBSs, 'observer', ''))) ; 
+L_all = sum(L(sort_indexes, :), 2) ;
+dist_L = dist_L(sort_indexes);
+
+
+if do_plot
+    % Create plots.
+    
+    label_size = 16;
+    tick_size = 12;
+    color = '#5CA0FF';
+    markersize = 7;
+    clf;
+    
+    t = tiledlayout(2,1, 'TileSpacing','tight', 'Padding','tight');
+    set(gcf,'Position',[10 10 500 1000])
+    
+    ax1 = nexttile;
+    h1 = plot(ax1,L_all, observers, 'o', 'color', color);
+    grid on;
+    
+    ax2 = nexttile;
+    h2 = plot(ax2,dist_L, observers, 'o', 'color', color);
+    grid on;
+    
+    set(h1, 'markerfacecolor', color, 'MarkerSize', markersize);
+    set(h2, 'markerfacecolor', color, 'MarkerSize', markersize);
+
+    
+    set(ax1, 'YTick', observers, 'FontSize', tick_size);
+    set(ax2, 'YTick', observers, 'FontSize', tick_size );
+    
+    xlabel(ax1,'Log likelihood', 'FontSize',label_size);
+    xlabel(ax2,'Log ratio difference', 'FontSize',label_size);
+    ylabel(ax1,'Observer', 'FontSize',label_size);
+    ylabel(ax2,'Observer', 'FontSize',label_size);
+    
+    exportgraphics(t, 'outliers_analysis.pdf', 'Append', false);
+
+end 
 
 end 
 

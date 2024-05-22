@@ -1,4 +1,4 @@
-function [L,dist_L] = pw_outlier_analysis_table( T, group_col, condition_cols, observer_col, selection_col )
+function [L_all, dist_L, OBSs_all] = pw_outlier_analysis_table( T, group_col, condition_cols, observer_col, selection_col )
 arguments
     T table
     group_col char
@@ -86,7 +86,7 @@ for gg=1:length(GRs)
         
     end
     
-    [L,dist_L] = pw_outlier_analysis(MM);
+    [L,~] = pw_outlier_analysis(MM);
     
     % Each group may have a different number of observers, so we need to
     % match those
@@ -97,14 +97,13 @@ for gg=1:length(GRs)
     end 
 end
 
+% Calculate the distance dist_L between each observer likelihood and the
+% observers' likelihood
 
-clf;
-ind = 1:N_obs;
-plot( sum(L_all,2), ind, 'o' );
-set( gca, 'YTick', ind );
-set( gca, 'YTickLabel', OBSs_all );
-xlabel( 'Log likelihood' );
-title( 'The log-likelihood reports similarity to all other observers', 'FontWeight', 'normal' );
-grid on;
+IR = iqr(sum(L_all, 2));
+fq = quantile(sum(L_all, 2),0.25);
+
+% Distance to the left part of the distribution
+dist_L = ((fq - sum(L_all, 2))/IR).*(sum(L_all, 2)<fq);
 
 end
