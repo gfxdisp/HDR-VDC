@@ -59,6 +59,8 @@ The data folder contains the following CSV files:
 	* L_1920x1080: the distribution of the JOD score of the `crf='L'` and `resolution=1920x1080` test condition, for each content, viewing distance and display luminance level. 
 	* L_1280x720: the distribution of the JOD score of the `crf='L'` and `resolution=1280x720` test condition, for each content, viewing distance and display luminance level. 
 
+* [`data/HDR_VDC_sureal_dataset_file.py`](https://github.com/gfxdisp/HDR-VDC/blob/main/data/HDR_VDC_sureal_dataset_file.py): The file is the sureal dataset file version of [`data/HDR_VDC_JOD_Scores.csv`](https://github.com/gfxdisp/HDR-VDC/blob/main/data/HDR_VDC_JOD_Scores.csv), which provides the same information in a different format. It also includes the distorted videos jod distribution for easier access to them. 
+
 * [`data/statistical_test_results.csv`](https://github.com/gfxdisp/HDR-VDC/blob/main/data/statistical_test_results.csv): statistical significance and effect size of the viewing distance and display peak luminance over all contents and for each distortion separately. The results are from the [`data_scaling/statistical_analysis.m`](https://github.com/gfxdisp/HDR-VDC/blob/main/data_scaling/statistical_analysis.m) function.
 
 ## References
