@@ -1,12 +1,12 @@
 import pickle
 import torch
-from pycvvdp.display_model import pq2lin, lin2pq, vvdp_display_photo_eotf
+from pycvvdp.display_model import lin2pq, vvdp_display_photo_eotf
 from pycvvdp import video_source_video_file
 from yuv_utils import YUVWriter
 
 
 '''
-This code reads a BT.2020-PQ Video, account for the display luminance, apply the display LUT model, 
+This code reads a BT.2020-PQ Video, accounts for the display luminance, apply the display LUT model, 
 and save the video as a YUV file
 '''
 
