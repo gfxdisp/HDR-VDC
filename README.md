@@ -21,6 +21,14 @@ Currently, we provide a simple outliers analysis function in [`data_scaling/outl
 
 The [`pwcmp`](https://github.com/gfxdisp/HDR-VDC/tree/main/pwcmp) folder contains the necessary base functions for our functions. 
 
+## Display Model
+
+The video files are encoded using the PQ transfer function and can span a very large dynamic range. 
+They were presented in the experiment on a pair of LG G2 OLED displays, which have a limited peak luminance and color gamut. 
+The video files also do not account for the dimming of the content in the `luminance_level`==`dim` conditions. 
+To correctly simulate the light emitted from the display during the experiment, it is necessary to use the Python code 
+with the display model, which can be found at [`display_model`](https://github.com/gfxdisp/HDR-VDC/tree/main/display_model).
+
 
 ## Data
 
