@@ -1,6 +1,8 @@
 
 # HDR-VDC: HDR AV1 video streaming quality dataset across Viewing and Display Conditions
 
+[project webpage](https://www.cl.cam.ac.uk/research/rainbow/projects/hdr-vdc/) | [dataset](https://doi.org/10.17863/CAM.107964) | [paper](https://www.cl.cam.ac.uk/research/rainbow/projects/hdr-vdc/hdr_vdc_qomex_paper.pdf)
+
 The ''HDR AV1 video streaming quality dataset across Viewing and Display Conditions (HDR-VDC)'' is a dataset that captures the effect of viewing distance and display  luminance on the visibility of streaming distortions in HDR content. 
 
 The dataset is composed of 16 reference videos collected from different sources [1]-[4] and 132 test videos, including the reference. The distortion space includes two main streaming artifacts: compression and upscaling. We employed three compression levels (CRF values) using the SVT-AV1 codec [5] and three resolutions, namely,  3840x2160, 1920x1080, and 1280x720. The downscaling and upscaling of the videos were performed using the Lanczos (a=3) filter [6]. 
