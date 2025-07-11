@@ -26,7 +26,12 @@ function scale_data_to_JOD()
 
 
 % Add the pwcmp functions 
-addpath('../pwcmp') ;
+%addpath('../pwcmp') ;
+
+if( ~exist( 'pw_scale', 'file' ) )
+    addpath( fullfile( pwd, '..', '..', 'pwcmp' ) );
+end
+
 
 % Define the path to the ouput csv file, as well as the folder for jod
 % distribution scores files.
@@ -79,7 +84,7 @@ for ii = 1:length(display_luminance_levels)
     % samples
 
     [R, Rs] = pw_scale_table(D, 'scene', { 'condition_1', 'condition_2' }, ...
-        'observer', 'selection', 'bootstrap_samples', 500, 'do_all', false );
+        'observer', 'selection', 'bootstrap_samples', 50, 'do_all', false, 'anchor_condition', 'ref' );
 
     % Here we will iterate over each content, find the reference node, assign
     % the quality 10 to it, and scale the test conditions (for the content)
@@ -115,7 +120,7 @@ for ii = 1:length(display_luminance_levels)
         distribution_table = array2table(distribution) ;
         distribution_table.Properties.VariableNames = scene_R.condition ;
 
-        distribution_filename = fullfile(jod_distribution_files_path, strcat(Rs{jj}.scene, '_', display_luminance_level, '.csv') );
+        distribution_filename = fullfile(jod_distribution_files_path, strcat(Rs{jj}.group, '_', display_luminance_level, '.csv') );
 
         writetable(distribution_table, distribution_filename) ;
 
@@ -141,6 +146,8 @@ for ii = 1:length(display_luminance_levels)
         end
 
     end
+
+    save( sprintf( 'hdr-vdc_scaled_%s.mat', display_luminance_levels{ii} ), "Rs" );
 
 end
 
