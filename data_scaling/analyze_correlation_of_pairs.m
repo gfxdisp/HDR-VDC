@@ -96,7 +96,7 @@ for mm=1:length(METRICs)
     end
 
 
-    pw_metric_pairwise_correlation( Rs, M, 'set', scatter_plot=true, group_column='group', condition_column='condition' );
+    pw_metric_pairwise_rmse( Rs, M, 'set', scatter_plot=true, group_column='group', condition_column='condition' );
 
     if dd==1
         title( { METRICs{mm}, get( gca, 'Title' ).String } );
